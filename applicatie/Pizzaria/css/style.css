@@ -1,0 +1,176 @@
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+header {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+a:link {
+  color: black;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+a:visited {
+  color: black;
+}
+
+a:hover {
+  color: rgb(100, 25, 25);
+}
+
+a:active {
+  color: black;
+}
+
+header img {
+  height: 48px;
+  padding: 5px;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  outline: 1px solid rgb(25, 25, 25);
+}
+
+nav p {
+  font-size: 20px;
+}
+
+section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 35px;
+}
+
+h2 {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+
+article {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  max-width: 24rem;
+  background-color: rgb(225, 225, 225);
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(200, 200, 200);
+}
+
+.pizzainfo {
+  display: flex;
+  margin: 0px;
+  padding: 2.5%;
+  box-shadow: 0px -3px 3px rgb(225, 225, 225);
+  max-height: 2rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pizzainfo button {
+  height: 100%;
+}
+
+.pizzainfo img {
+  height: 100%;
+}
+
+.actie {
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+  padding: 15px;
+  margin: 0px;
+}
+
+.actie img {
+  width: 100%;
+  max-width: 64rem;
+}
+
+.cart {
+  margin: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+table {
+  border-collapse: collapse;
+  border: 1px solid rgb(238, 238, 238);
+  width: 80%
+}
+
+@media only screen and (max-width: 600px) {
+  table {
+    width: 100%
+  }
+}
+
+th {
+  padding: 5px;
+  padding-right: 15px;
+  padding-left: 15px;
+  text-align: left;
+  border-right: 1px solid rgb(238, 238, 238);
+}
+
+td {
+  padding: 5px;
+  padding-right: 15px;
+  padding-left: 15px;
+  border-right: 1px solid rgb(238, 238, 238);
+  padding-bottom: 30px;
+}
+
+tr:nth-child(even) {
+  background-color: rgb(225, 225, 225);
+}
+
+.order {
+  width: 80%;
+  padding: 5px;
+}
+
+@media only screen and (max-width: 600px) {
+  .order {
+    width: 100%;
+  }
+}
+
+.user {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+form {
+  margin: 0px;
+  padding: 0px
+}
+
+input {
+  margin: 3px 3px 3px 0px;
+}
+
+
+.info {
+  text-align: center;
+  margin:10px
+}
+
+.bestellingen{
+  width:80%;
+}
