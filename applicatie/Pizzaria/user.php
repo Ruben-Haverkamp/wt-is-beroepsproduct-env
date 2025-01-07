@@ -1,6 +1,10 @@
 <?php
 require_once 'db_connectie.php';
+session_start();
 
+///////////////////
+//  Registreren  //
+///////////////////
 $melding = '';  // nog niks te melden
 
 // check voor de knop
@@ -66,6 +70,44 @@ if (isset($_POST['Submit'])) {
         }
     }
 }
+
+//////////////////
+//   Inloggen   //
+//////////////////
+$success = '';  // Nog niks te melden 
+
+if (isset($_POST['login'])) {
+    // 1. Lees gegevens
+    $naam        = $_POST['innaam'];
+    $wachtwoord  = $_POST['inwachtwoord'];
+
+    // 3. Ophalen van de hash uit de database
+    $db = maakVerbinding();
+    // Select query (prepared statement)
+    $sql = 'SELECT password FROM [User] WHERE username = :naam';
+    $query = $db->prepare($sql);
+
+    $data_array = [
+        ':naam' => $naam
+    ];
+    $query->execute($data_array);
+
+    if ($rij = $query->fetch()) {
+        // Gebruiker gevonden
+        $passwordhash = $rij['password'];
+
+        // Wachtwoord checken
+        if (password_verify($wachtwoord, $passwordhash)) {
+
+            $_SESSION['gebruiker'] = $naam;
+            $success = 'Gebruiker is ingelogd.';
+        } else {
+            $success = 'Fout: onjuiste inloggegevens!';
+        }
+    } else {
+        $success = 'Onjuiste inloggegevens.';
+    }
+}
 ?>
 
 
@@ -99,38 +141,49 @@ if (isset($_POST['Submit'])) {
         </a>
     </nav>
     <main class="user">
-        <section>
-            <form action="login_action.php">
-                <h3>Inloggen:</h3>
-                <label for="emaillogin">Email:</label><br>
-                <input type="email" id="emaillogin" name="emaillogin"><br>
-                <label for="passwlogin">Wachtwoord:</label><br>
-                <input type="password" id="passwlogin" name="passwordlogin"><br>
-                <input type="submit" value="Submit">
-            </form>
-        </section>
+    <?php if (isset($_SESSION['gebruiker'])): ?>
 
-        <section>
-            <form method="post" action="">
-                <h3>Registreren:</h3>
-                <label for="voornaam">Voornaam:</label><br>
-                <input type="text" id="voornaam" name="voornaam"><br>
-                <label for="achternaam">Achternaam:</label><br>
-                <input type="text" id="achternaam" name="achternaam"><br>
-                <label for="naam">Gebruikersnaam:</label><br>
-                <input type="text" id="naam" name="naam"><br>
-                <label for="wachtwoord">Wachtwoord:</label><br>
-                <input type="password" id="wachtwoord" name="wachtwoord"><br>
-<!--                  <label for="stad">Stad:</label><br>
-                <input type="text" id="stad" name="stad"><br>
-                <label for="postc">Postcode:</label><br>
-                <input type="text" id="postc" name="postc"><br>
-                <label for="adres">Adres:</label><br>
-                <input type="text" id="adres" name="adres"><br> -->
-                <input type="submit" name="Submit" value="Submit">
-                <?=$melding?><br>          
-            </form>
-        </section>
+
+        
+            <section>
+                <h3>Welkom, <?= htmlspecialchars($_SESSION['gebruiker']); ?></h3>
+                <p>U bent ingelogd.</p><br>
+                <form method="post" action="">
+                    <input type="submit" value="Uitloggen" name="uitlog">
+                </form>
+            </section>
+        <?php else: ?>
+
+
+
+            <section>
+                <form method="post" action="">
+                    <h3>Inloggen:</h3>
+                    <label for="innaam">Gebruikersnaam:</label><br>
+                    <input type="text" id="innaam" name="innaam"><br>
+                    <label for="inwachtwoord">Wachtwoord:</label><br>
+                    <input type="password" id="inwachtwoord" name="inwachtwoord"><br>
+                    <input type="submit" value="Inloggen" name="login">
+                    <?= $success ?? ''; ?><br>
+                </form>
+            </section>
+
+            <section>
+                <form method="post" action="">
+                    <h3>Registreren:</h3>
+                    <label for="voornaam">Voornaam:</label><br>
+                    <input type="text" id="voornaam" name="voornaam"><br>
+                    <label for="achternaam">Achternaam:</label><br>
+                    <input type="text" id="achternaam" name="achternaam"><br>
+                    <label for="naam">Gebruikersnaam:</label><br>
+                    <input type="text" id="naam" name="naam"><br>
+                    <label for="wachtwoord">Wachtwoord:</label><br>
+                    <input type="password" id="wachtwoord" name="wachtwoord"><br>
+                    <input type="submit" name="register" value="Registreren">
+                    <?= $melding ?? ''; ?><br>
+                </form>
+            </section>
+        <?php endif; ?>
     </main>
 </body>
 
