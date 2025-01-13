@@ -42,29 +42,9 @@
             </article>
 
             <article>
-                <img src="img/caprese.png" alt="Caprese">
+                <img src="img/vegetarisch.png" alt="vegetarisch">
                 <div class="pizzainfo">
-                    <h3>Caprese</h3>
-                    <button>
-                        <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
-                    </button>
-                </div>
-            </article>
-
-            <article>
-                <img src="img/americana.png" alt="Americana">
-                <div class="pizzainfo">
-                    <h3>Americana</h3>
-                    <button>
-                        <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
-                    </button>
-                </div>
-            </article>
-
-            <article>
-                <img src="img/veganveggi.png" alt="Vegan Veggi">
-                <div class="pizzainfo">
-                    <h3>Vegan Veggi</h3>
+                    <h3>vegetarisch</h3>
                     <button>
                         <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
                     </button>
@@ -85,29 +65,9 @@
             </article>
 
             <article>
-                <img src="img/tonno.png" alt="Tonno">
+                <img src="img/hawaii.png" alt="Hawaii">
                 <div class="pizzainfo">
-                    <h3>Tonno</h3>
-                    <button>
-                        <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
-                    </button>
-                </div>
-            </article>
-
-            <article>
-                <img src="img/caprese.png" alt="Caprese">
-                <div class="pizzainfo">
-                    <h3>Caprese</h3>
-                    <button>
-                        <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
-                    </button>
-                </div>
-            </article>
-
-            <article>
-                <img src="img/salami.png" alt="Salami">
-                <div class="pizzainfo">
-                    <h3>Salami</h3>
+                    <h3>Hawaii</h3>
                     <button>
                         <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
                     </button>
@@ -126,84 +86,14 @@
                     </button>
                 </div>
             </article>
-
-            <article>
-                <img src="img/ham.png" alt="Ham">
-                <div class="pizzainfo">
-                    <h3>Ham</h3>
-                    <button>
-                        <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
-                    </button>
-                </div>
-            </article>
-
-            <article>
-                <img src="img/kebab.png" alt="Kebab">
-                <div class="pizzainfo">
-                    <h3>Kebab</h3>
-                    <button>
-                        <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
-                    </button>
-                </div>
-            </article>
-
-            <article>
-                <img src="img/bbqchicken.png" alt="BBQ Chicken">
-                <div class="pizzainfo">
-                    <h3>BBQ Chicken</h3>
-                    <button>
-                        <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
-                    </button>
-                </div>
-            </article>
-
-            <article>
-                <img src="img/shoarma.png" alt="Shoarma">
-                <div class="pizzainfo">
-                    <h3>Smoarma</h3>
-                    <button>
-                        <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
-                    </button>
-                </div>
-            </article>
-
-            <article>
-                <img src="img/americana.png" alt="Americana">
-                <div class="pizzainfo">
-                    <h3>Americana</h3>
-                    <button>
-                        <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
-                    </button>
-                </div>
-            </article>
         </section>
 
         <h2>Vegan:</h2>
         <section>
             <article>
-                <img src="img/veganchicken.png" alt="Vegan Chicken">
+                <img src="img/Vegetarisch.png" alt="Vegetarisch">
                 <div class="pizzainfo">
-                    <h3>Vegan Chicken</h3>
-                    <button>
-                        <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
-                    </button>
-                </div>
-            </article>
-
-            <article>
-                <img src="img/veganmagherita.png" alt="Vegan Magherita">
-                <div class="pizzainfo">
-                    <h3>Vegan Magherita</h3>
-                    <button>
-                        <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
-                    </button>
-                </div>
-            </article>
-
-            <article>
-                <img src="img/veganveggi.png" alt="Vegan Veggi">
-                <div class="pizzainfo">
-                    <h3>Vegan Veggi</h3>
+                    <h3>Vegetarisch</h3>
                     <button>
                         <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
                     </button>
