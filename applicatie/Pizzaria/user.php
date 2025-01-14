@@ -3,12 +3,23 @@ require_once 'db_connectie.php';
 session_start();
 
 ///////////////////
+//   Uitloggen   //
+///////////////////
+if (isset($_POST['uitlog'])) {
+    // Sessie beëindigen
+    session_unset();  // Verwijdert alle sessievariabelen
+    session_destroy(); // Vernietigt de sessie
+    header("Location: index.php"); // Optioneel: doorverwijzen naar de startpagina
+    exit;
+}
+
+///////////////////
 //  Registreren  //
 ///////////////////
 $melding = '';  // nog niks te melden
 
 // check voor de knop
-if (isset($_POST['Submit'])) {
+if (isset($_POST['submit'])) {
     $fouten = [];
     // 1. inlezen gegevens uit form
     $naam       = $_POST['naam'];
@@ -179,7 +190,7 @@ if (isset($_POST['login'])) {
                     <input type="text" id="naam" name="naam"><br>
                     <label for="wachtwoord">Wachtwoord:</label><br>
                     <input type="password" id="wachtwoord" name="wachtwoord"><br>
-                    <input type="submit" name="register" value="Registreren">
+                    <input type="submit" name="submit" value="Registreren">
                     <?= $melding ?? ''; ?><br>
                 </form>
             </section>
