@@ -1,10 +1,21 @@
+<?php
+require_once 'db_connectie.php';
+require_once 'functions.php';
+session_start();
+
+//Voeg pizza toe aan winkelmandje
+if (isset($_POST['toevoegen'])) {
+    toevoegen();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="nl">
 <link rel="stylesheet" href="css/normalize.css">
 <link rel="stylesheet" href="css/style.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pizza's</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pizza's</title>
 </head>
 
 <body>
@@ -35,19 +46,25 @@
                 <img src="img/pepperoni.png" alt="Pepperoni">
                 <div class="pizzainfo">
                     <h3>Pepperoni</h3>
-                    <button>
-                        <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
-                    </button>
+                    <form method="post" action="">
+                        <input type="hidden" name="pizza" value="Pepperoni Pizza">
+                        <button type="submit" name="toevoegen">
+                            <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
+                        </button>
+                    </form>
                 </div>
             </article>
 
             <article>
                 <img src="img/vegetarisch.png" alt="vegetarisch">
                 <div class="pizzainfo">
-                    <h3>vegetarisch</h3>
-                    <button>
-                        <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
-                    </button>
+                    <h3>Vegetarisch</h3>
+                    <form method="post" action="">
+                        <input type="hidden" name="pizza" value="Vegetarische Pizza">
+                        <button type="submit" name="toevoegen">
+                            <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
+                        </button>
+                    </form>
                 </div>
             </article>
         </section>
@@ -58,9 +75,12 @@
                 <img src="img/margherita.png" alt="Magherita">
                 <div class="pizzainfo">
                     <h3>Margherita</h3>
-                    <button>
-                        <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
-                    </button>
+                    <form method="post" action="">
+                        <input type="hidden" name="pizza" value="Margherita Pizza">
+                        <button type="submit" name="toevoegen">
+                            <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
+                        </button>
+                    </form>
                 </div>
             </article>
 
@@ -68,9 +88,12 @@
                 <img src="img/hawaii.png" alt="Hawaii">
                 <div class="pizzainfo">
                     <h3>Hawaii</h3>
-                    <button>
-                        <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
-                    </button>
+                    <form method="post" action="">
+                        <input type="hidden" name="pizza" value="Hawaiian Pizza">
+                        <button type="submit" name="toevoegen">
+                            <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
+                        </button>
+                    </form>
                 </div>
             </article>
         </section>
@@ -81,9 +104,12 @@
                 <img src="img/pepperoni.png" alt="Pepperoni">
                 <div class="pizzainfo">
                     <h3>Pepperoni</h3>
-                    <button>
-                        <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
-                    </button>
+                    <form method="post" action="">
+                        <input type="hidden" name="pizza" value="Pepperoni Pizza">
+                        <button type="submit" name="toevoegen">
+                            <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
+                        </button>
+                    </form>
                 </div>
             </article>
         </section>
@@ -94,9 +120,12 @@
                 <img src="img/Vegetarisch.png" alt="Vegetarisch">
                 <div class="pizzainfo">
                     <h3>Vegetarisch</h3>
-                    <button>
-                        <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
-                    </button>
+                    <form method="post" action="">
+                        <input type="hidden" name="pizza" value="Vegetarische Pizza">
+                        <button type="submit" name="toevoegen">
+                            <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
+                        </button>
+                    </form>
                 </div>
             </article>
         </section>

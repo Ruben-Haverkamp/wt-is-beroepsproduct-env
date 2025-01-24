@@ -79,6 +79,10 @@ article {
   justify-content: space-between;
 }
 
+.pizzainfo form {
+  height: 100%;
+}
+
 .pizzainfo button {
   height: 100%;
 }
@@ -102,6 +106,7 @@ article {
 
 .cart {
   margin: 15px;
+  margin-bottom: 50px;
   display: flex;
   justify-content: center;
 }
@@ -138,9 +143,13 @@ tr:nth-child(even) {
   background-color: rgb(225, 225, 225);
 }
 
-.order {
+.orderform {
   width: 80%;
   padding: 5px;
+}
+
+.order {
+  width: 100%;
 }
 
 @media only screen and (max-width: 600px) {
@@ -172,5 +181,6 @@ input {
 }
 
 .bestellingen{
+  margin: 0px;
   width:80%;
 }

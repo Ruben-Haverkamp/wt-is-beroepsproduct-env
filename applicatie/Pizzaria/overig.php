@@ -1,10 +1,21 @@
+<?php
+require_once 'db_connectie.php';
+require_once 'functions.php';
+session_start();
+
+//Voeg pizza toe aan winkelmandje
+if (isset($_POST['toevoegen'])) {
+    toevoegen();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="nl">
 <link rel="stylesheet" href="css/normalize.css">
 <link rel="stylesheet" href="css/style.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Overig</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Overig</title>
 </head>
 
 <body>
@@ -28,26 +39,19 @@
         </a>
     </nav>
     <main>
-        
+
         <h2>Acties:</h2>
         <section>
-            <article>
-                <img src="img/Lavacake.png" alt="Lavacake">
-                <div class="pizzainfo">
-                    <h3>Lavacake</h3>
-                    <button>
-                        <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
-                    </button>
-                </div>
-            </article>
-
             <article>
                 <img src="img/sprite.png" alt="Sprite">
                 <div class="pizzainfo">
                     <h3>Sprite</h3>
-                    <button>
-                        <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
-                    </button>
+                    <form method="post" action="">
+                        <input type="hidden" name="pizza" value="Sprite">
+                        <button type="submit" name="toevoegen">
+                            <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
+                        </button>
+                    </form>
                 </div>
             </article>
         </section>
@@ -55,22 +59,15 @@
         <h2>Dranken:</h2>
         <section>
             <article>
-                <img src="img/cola.png" alt="Cola">
+                <img src="img/cola.png" alt="Coca Cola">
                 <div class="pizzainfo">
-                    <h3>Cola</h3>
-                    <button>
-                        <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
-                    </button>
-                </div>
-            </article>
-
-            <article>
-                <img src="img/fanta.png" alt="Fanta">
-                <div class="pizzainfo">
-                    <h3>Fanta</h3>
-                    <button>
-                        <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
-                    </button>
+                    <h3>Coca Cola</h3>
+                    <form method="post" action="">
+                        <input type="hidden" name="pizza" value="Coca Cola">
+                        <button type="submit" name="toevoegen">
+                            <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
+                        </button>
+                    </form>
                 </div>
             </article>
 
@@ -78,62 +75,41 @@
                 <img src="img/sprite.png" alt="Sprite">
                 <div class="pizzainfo">
                     <h3>Sprite</h3>
-                    <button>
-                        <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
-                    </button>
-                </div>
-            </article>
-
-            <article>
-                <img src="img/icetea.png" alt="Fuzetea Green">
-                <div class="pizzainfo">
-                    <h3>Fuzetea Green</h3>
-                    <button>
-                        <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
-                    </button>
+                    <form method="post" action="">
+                        <input type="hidden" name="pizza" value="Sprite">
+                        <button type="submit" name="toevoegen">
+                            <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
+                        </button>
+                    </form>
                 </div>
             </article>
         </section>
 
-        <h2>Desert:</h2>
+        <h2>Kleine Gerechten:</h2>
         <section>
             <article>
-                <img src="img/Lavacake.png" alt="Lavacake">
+                <img src="img/Combinatiemaaltijd.png" alt="Combinatiemaaltijd">
                 <div class="pizzainfo">
-                    <h3>Lavacake</h3>
-                    <button>
-                        <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
-                    </button>
+                    <h3>Combinatiemaaltijd</h3>
+                    <form method="post" action="">
+                        <input type="hidden" name="pizza" value="Combinatiemaaltijd">
+                        <button type="submit" name="toevoegen">
+                            <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
+                        </button>
+                    </form>
                 </div>
             </article>
 
             <article>
-                <img src="img/chocopizza.png" alt="Chocopizza">
+                <img src="img/Knoflookbrood.png" alt="Knoflookbrood">
                 <div class="pizzainfo">
-                    <h3>Chocopizza</h3>
-                    <button>
-                        <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
-                    </button>
-                </div>
-            </article>
-
-            <article>
-                <img src="img/poffertjes.png" alt="Poffertjes">
-                <div class="pizzainfo">
-                    <h3>Poffertjes</h3>
-                    <button>
-                        <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
-                    </button>
-                </div>
-            </article>
-
-            <article>
-                <img src="img/ijs.png" alt="Ben & Jerry's">
-                <div class="pizzainfo">
-                    <h3>Ben & Jerry's</h3>
-                    <button>
-                        <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
-                    </button>
+                    <h3>Knoflookbrood</h3>
+                    <form method="post" action="">
+                        <input type="hidden" name="pizza" value="Knoflookbrood">
+                        <button type="submit" name="toevoegen">
+                            <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
+                        </button>
+                    </form>
                 </div>
             </article>
         </section>

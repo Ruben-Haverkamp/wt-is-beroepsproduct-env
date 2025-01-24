@@ -1,3 +1,14 @@
+<?php
+require_once 'db_connectie.php';
+require_once 'functions.php';
+session_start();
+
+//Voeg pizza toe aan winkelmandje
+if (isset($_POST['toevoegen'])) {
+    toevoegen();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="nl">
 <link rel="stylesheet" href="css/normalize.css">
@@ -34,44 +45,29 @@
 
         <h2>Acties:</h2>
         <section>
-
-            <article>
+        <article>
                 <img src="img/pepperoni.png" alt="Pepperoni">
                 <div class="pizzainfo">
                     <h3>Pepperoni</h3>
-                    <button>
-                        <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
-                    </button>
+                    <form method="post" action="">
+                        <input type="hidden" name="pizza" value="Pepperoni Pizza">
+                        <button type="submit" name="toevoegen">
+                            <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
+                        </button>
+                    </form>
                 </div>
             </article>
 
             <article>
-                <img src="img/caprese.png" alt="Caprese">
+                <img src="img/vegetarisch.png" alt="vegetarisch">
                 <div class="pizzainfo">
-                    <h3>Caprese</h3>
-                    <button>
-                        <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
-                    </button>
-                </div>
-            </article>
-
-            <article>
-                <img src="img/Americana.png" alt="Americana">
-                <div class="pizzainfo">
-                    <h3>Americana</h3>
-                    <button>
-                        <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
-                    </button>
-                </div>
-            </article>
-
-            <article>
-                <img src="img/VeganVeggi.png" alt="Vegan Veggi">
-                <div class="pizzainfo">
-                    <h3>Vegan Veggi</h3>
-                    <button>
-                        <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
-                    </button>
+                    <h3>Vegetarisch</h3>
+                    <form method="post" action="">
+                        <input type="hidden" name="pizza" value="Vegetarische Pizza">
+                        <button type="submit" name="toevoegen">
+                            <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
+                        </button>
+                    </form>
                 </div>
             </article>
 
@@ -79,24 +75,21 @@
                 <img src="img/sprite.png" alt="Sprite">
                 <div class="pizzainfo">
                     <h3>Sprite</h3>
-                    <button>
-                        <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
-                    </button>
+                    <form method="post" action="">
+                        <input type="hidden" name="pizza" value="Sprite">
+                        <button type="submit" name="toevoegen">
+                            <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
+                        </button>
+                    </form>
                 </div>
             </article>
-
-            <article>
-                <img src="img/lavacake.png" alt="Lavacake">
-                <div class="pizzainfo">
-                    <h3>Lavacake</h3>
-                    <button>
-                        <img src="img/cart.png" alt="Toevoegen aan winkelmandje">
-                    </button>
-                </div>
-            </article>
-
         </section>
     </main>
+    
+    <?php
+    //Knop naar personeel pagina
+    if (isPersoneel() == true) {echo '<a href="orders.php">Naar bestellingen</a>';};
+    ?>
 </body>
 
 </html>

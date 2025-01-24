@@ -9,7 +9,7 @@ if (isset($_POST['uitlog'])) {
     // Sessie beëindigen
     session_unset();  // Verwijdert alle sessievariabelen
     session_destroy(); // Vernietigt de sessie
-    header("Location: index.php"); // Optioneel: doorverwijzen naar de startpagina
+    header("Location: index.php");
     exit;
 }
 
@@ -18,16 +18,17 @@ if (isset($_POST['uitlog'])) {
 ///////////////////
 $melding = '';  // nog niks te melden
 
-// check voor de knop
+//check voor de knop
 if (isset($_POST['submit'])) {
     $fouten = [];
     // 1. inlezen gegevens uit form
-    $naam       = $_POST['naam'];
+    $naam = $_POST['naam'];
     $wachtwoord = $_POST['wachtwoord'];
-    $voornaam   = $_POST['voornaam'];
+    $voornaam = $_POST['voornaam'];
     $achternaam = $_POST['achternaam'];
+    $address = $_POST['adres'];
 
-    // 2. controleren van de gegevens
+    //Controleren van gegevens
     if (strlen($naam) < 4) {
         $fouten[] = 'Gebruikersnaam minstens 4 karakters.';
     }
@@ -53,27 +54,23 @@ if (isset($_POST['submit'])) {
         $melding .= "</ul>";
 
     } else {
-        // Hash het wachtwoord
         $passwordhash = password_hash($wachtwoord, PASSWORD_DEFAULT);
-        
-        // database
+
         $db = maakVerbinding();
-        // Insert query (prepared statement)
-        $sql = 'INSERT INTO [User](username, password, first_name, last_name, role)
-        VALUES (:naam, :passwordhash, :first_name, :last_name, :role)';
+        $sql = 'INSERT INTO [User](username, password, first_name, last_name, address, role)
+        VALUES (:naam, :passwordhash, :first_name, :last_name, :address, :role)';
         $query = $db->prepare($sql);
 
-        // Data array met juiste keys
         $data_array = [
-            ':naam' => $naam,
-            ':passwordhash' => $passwordhash,
-            ':first_name' => $voornaam,
-            ':last_name' => $achternaam,
+            ':naam' => htmlspecialchars($naam),
+            ':passwordhash' => htmlspecialchars($passwordhash),
+            ':first_name' => htmlspecialchars($voornaam),
+            ':last_name' => htmlspecialchars($achternaam),
+            ':address' => htmlspecialchars($address),
             ':role' => 'Client'
-        ];        
+        ];
         $succes = $query->execute($data_array);
 
-        // Check resultaten
         if ($succes) {
             $melding = 'Gebruiker is geregistreerd.';
         } else {
@@ -85,29 +82,24 @@ if (isset($_POST['submit'])) {
 //////////////////
 //   Inloggen   //
 //////////////////
-$success = '';  // Nog niks te melden 
+$success = '';
 
 if (isset($_POST['login'])) {
-    // 1. Lees gegevens
-    $naam        = $_POST['innaam'];
-    $wachtwoord  = $_POST['inwachtwoord'];
+    $naam = $_POST['innaam'];
+    $wachtwoord = $_POST['inwachtwoord'];
 
-    // 3. Ophalen van de hash uit de database
     $db = maakVerbinding();
-    // Select query (prepared statement)
     $sql = 'SELECT password FROM [User] WHERE username = :naam';
     $query = $db->prepare($sql);
 
     $data_array = [
-        ':naam' => $naam
+        ':naam' => htmlspecialchars($naam)
     ];
     $query->execute($data_array);
 
     if ($rij = $query->fetch()) {
-        // Gebruiker gevonden
         $passwordhash = $rij['password'];
 
-        // Wachtwoord checken
         if (password_verify($wachtwoord, $passwordhash)) {
 
             $_SESSION['gebruiker'] = $naam;
@@ -126,9 +118,9 @@ if (isset($_POST['login'])) {
 <html lang="nl">
 <link rel="stylesheet" href="css/normalize.css">
 <link rel="stylesheet" href="css/style.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inlog</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inlog</title>
 </head>
 
 <body>
@@ -152,10 +144,10 @@ if (isset($_POST['login'])) {
         </a>
     </nav>
     <main class="user">
-    <?php if (isset($_SESSION['gebruiker'])): ?>
+        <?php if (isset($_SESSION['gebruiker'])): ?>
 
 
-        
+
             <section>
                 <h3>Welkom, <?= htmlspecialchars($_SESSION['gebruiker']); ?></h3>
                 <p>U bent ingelogd.</p><br>
@@ -171,9 +163,9 @@ if (isset($_POST['login'])) {
                 <form method="post" action="">
                     <h3>Inloggen:</h3>
                     <label for="innaam">Gebruikersnaam:</label><br>
-                    <input type="text" id="innaam" name="innaam"><br>
+                    <input type="text" id="innaam" name="innaam" required><br>
                     <label for="inwachtwoord">Wachtwoord:</label><br>
-                    <input type="password" id="inwachtwoord" name="inwachtwoord"><br>
+                    <input type="password" id="inwachtwoord" name="inwachtwoord" required><br>
                     <input type="submit" value="Inloggen" name="login">
                     <?= $success ?? ''; ?><br>
                 </form>
@@ -183,13 +175,15 @@ if (isset($_POST['login'])) {
                 <form method="post" action="">
                     <h3>Registreren:</h3>
                     <label for="voornaam">Voornaam:</label><br>
-                    <input type="text" id="voornaam" name="voornaam"><br>
+                    <input type="text" id="voornaam" name="voornaam" required><br>
                     <label for="achternaam">Achternaam:</label><br>
-                    <input type="text" id="achternaam" name="achternaam"><br>
+                    <input type="text" id="achternaam" name="achternaam" required><br>
                     <label for="naam">Gebruikersnaam:</label><br>
-                    <input type="text" id="naam" name="naam"><br>
+                    <input type="text" id="naam" name="naam" required><br>
                     <label for="wachtwoord">Wachtwoord:</label><br>
-                    <input type="password" id="wachtwoord" name="wachtwoord"><br>
+                    <input type="password" id="wachtwoord" name="wachtwoord" required><br>
+                    <label for="naam">Adres:</label><br>
+                    <input type="text" id="adres" name="adres" required><br>
                     <input type="submit" name="submit" value="Registreren">
                     <?= $melding ?? ''; ?><br>
                 </form>
